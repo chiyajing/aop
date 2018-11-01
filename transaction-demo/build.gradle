@@ -1,0 +1,24 @@
+dependencies {
+
+    compile("com.suixingpay.starter:suixingpay-starter-web:$suixingpayStarterVersion") //
+    compile("com.suixingpay.starter:suixingpay-starter-swagger2:$suixingpayStarterVersion") // swagger
+
+    compile("org.springframework.boot:spring-boot-starter-web")
+
+    compile("com.suixingpay.starter:suixingpay-starter-mybatis:$suixingpayStarterVersion") // mybatis mapper 抽象
+    compile("com.suixingpay.starter:suixingpay-starter-mybatis-page:$suixingpayStarterVersion") // 分页插件
+
+    compile("com.suixingpay.starter:suixingpay-starter-druid:$suixingpayStarterVersion") // druid 数据源
+
+    compile("mysql:mysql-connector-java")
+
+}
+bootRepackage {
+    enabled = true
+}
+callHierarchy {
+    enabled = true
+}
+springBoot {
+    // mainClass = "com.suixingpay.demo.DemoApplication"
+}

@@ -1,0 +1,5 @@
+dependencies {
+    compile("org.springframework.boot:spring-boot-starter-aop")
+    compile("org.springframework.boot:spring-boot-starter-test")
+    compile("cglib:cglib:3.2.4")
+}
