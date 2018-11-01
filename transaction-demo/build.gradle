@@ -16,9 +16,6 @@ dependencies {
 bootRepackage {
     enabled = true
 }
-callHierarchy {
-    enabled = true
-}
 springBoot {
     // mainClass = "com.suixingpay.demo.DemoApplication"
 }
