@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.suixingpay.transaction.mapper.BalanceMapper">
+
+  <resultMap id="Result"
+             type="com.suixingpay.transaction.domain.Balance">
+    <result property="name" column="name"/>
+    <result property="money" column="money"/>
+  </resultMap>
+
+  <sql id="column">
+    name, money
+  </sql>
+
+  <sql id="dynamicWhere">
+    <where>
+      <if test="null != name ">and name = #{name}</if>
+      <if test="null != money ">and money = #{money}</if>
+    </where>
+  </sql>
+
+
+  <insert id="save"
+          parameterType="com.suixingpay.transaction.domain.Balance">
+    insert into balance
+    (name, money)
+    values(
+    #{name},
+    #{money}
+    )
+  </insert>
+
+  <update id="update">
+    update balance
+    <set>
+      <if test="null != money "> money = #{money}</if>
+    </set>
+    where name = #{name}
+  </update>
+
+  <delete id="delete">
+   delete from balance
+   where name = #{name}
+  </delete>
+
+  <select id="count" resultType="java.lang.Long">
+    select distinct count(1)
+    from balance
+    <include refid="dynamicWhere"/>
+  </select>
+
+  <select id="find" resultType="com.suixingpay.transaction.domain.Balance">
+    select distinct
+    <include refid="column"/>
+    from balance
+    <include refid="dynamicWhere"/>
+  </select>
+
+  <select id="getMoneyByName" resultType="java.lang.Double">
+    select money from balance
+    where name = #{name}
+  </select>
+
+</mapper>

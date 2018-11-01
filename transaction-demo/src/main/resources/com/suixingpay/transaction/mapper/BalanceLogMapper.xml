@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.suixingpay.transaction.mapper.BalanceLogMapper">
+
+  <resultMap id="Result"
+             type="com.suixingpay.transaction.domain.BalanceLog">
+    <result property="fromUser" column="from_user"/>
+    <result property="toUser" column="to_user"/>
+    <result property="money" column="money"/>
+  </resultMap>
+
+
+  <insert id="save"
+          parameterType="com.suixingpay.transaction.domain.BalanceLog">
+    insert into balance_log
+    (from_user,to_user, money)
+    values(
+    #{fromUser},
+    #{toUser},
+    #{money}
+    )
+  </insert>
+
+</mapper>
